@@ -1,0 +1,70 @@
+# Faculty Editor
+
+<img width="1919" height="1011" alt="image" src="https://github.com/user-attachments/assets/c8c228de-8ef1-463b-ae28-c111ddaaea54" />
+
+_**Definizione immagine qua sopra:** Ecco uno script Python esempio_
+
+---
+
+## About Faculty Editor
+
+Faculty Editor è un'editor di testo semplice, minimalista e intuitivo. E' progettato per essere facile da usare e fornire una esperienza di editing fluida. \
+Faculty Editor, nonostante sia molto avanzato, come potete notare, è fatto in HTML, CSS e JavaScript. Usiamo queste tecnologie per garantire semplicità e uso multipiattaforma. \
+Io, l'autore, nonstante io uso VS Code per lo sviluppo, di come è venuto Faculty Editor, ne sono molto orgoglioso e spero ne apprezzate.
+
+---
+
+## Basi
+
+Create sul vostro Dekstop un file `ciao.js` e apritelo con Faculty Editor:
+
+
+https://github.com/user-attachments/assets/e8fccab1-b38b-4810-8ff0-48e3a8aab8a5
+
+_**Definizione video qua sopra:** Come si fa ad aprire_
+
+Digitate nel codice:
+
+```javascript
+console.log("Faculty Editor")
+```
+
+Dopo, andate nel menu Esegui > Esegui JS.
+
+Aprite i DevTools del browser (F12) e negli output vedrete `Faculty Editor`:
+
+
+https://github.com/user-attachments/assets/ecc84809-f46a-4cc0-8651-ab49aed46229
+
+_**Definizione video qua sopra:** Come dovrebbe essere sui DevTools di un comune browser_
+
+---
+
+## DevTools
+
+>[!TIP]
+>Al momento i DevTools NON sono disponibili in Italiano.
+
+Usate CTRL-O per entrare nei DevTools.
+
+Facciamo un commit del nostro `ciao.js`! \
+Cliccate prima di tutto sul tasto configure, e potete inserire delle credenziali false, poi il nome della repo locale
+
+>[!NOTE]
+>E' Necessario avere installato Git per fare un repo locale.
+
+Nel terminal integrato, prima, vediamo lo stato di Git. Digitate `git status`, poi cliccate Execute. Dovreste vedere l'output:
+
+```ShellOutput
+On branch main
+nothing to commit, working tree clean
+```
+
+Se tutto va bene, cliccate su "Commit" e inserite il nome commit. Poi Dovreste vedere qualcosa del genere:
+
+<img width="562" height="279" alt="image" src="https://github.com/user-attachments/assets/4e133826-87fd-4f58-a40d-fa2385b5a0c6" />
+
+_**Definizione immagine qua sopra:** output finale di un commit esempio_
+
+In questo esempio, significa che il Git integrato in Faculty Editor ha messo il commit con nome "commit esempio per ciao.js" e ha messo l'hash `pZCwKVtRso6YUnu2Hm6a682HK6eAgmwjeJH4mjfa`
+
