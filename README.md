@@ -6,6 +6,17 @@ _**Definizione immagine qua sopra:** Ecco uno script Python esempio_
 
 ---
 
+## Tabella dei contenuti
+
+- [About Faculty Editor](#about-faculty-editor)
+- [Basi](#basi)
+- [DevTools](#devtools)
+- [Installa](#installa)
+- [Browser supportati](#browser-supportati)
+  - [Versioni browser](#versioni-browser)
+  - [Visualizzatori HTML Predefiniti](#visualizzatori-html-predefiniti)
+---
+
 ## About Faculty Editor
 
 Faculty Editor è un'editor di testo semplice, minimalista e intuitivo. E' progettato per essere facile da usare e fornire una esperienza di editing fluida. \
@@ -80,13 +91,16 @@ In questo esempio, significa che il Git integrato in Faculty Editor ha messo il 
 
 ## Browser supportati
 
+### Versioni browser
+
 |   |   |   |   |   |
 |:-:|:-:|:-:|:-:|:-:|
 | ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/main/src/safari/safari_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/main/src/opera/opera_48x48.png) | ![Edge](https://raw.githubusercontent.com/alrra/browser-logos/main/src/edge/edge_48x48.png) |
 | **Chrome** | **Firefox** | **Safari** | **Opera** | **Edge** |
 | ✅ Ultima versione | ✅ Ultima versione | ✅ Ultima versione | ✅ Ultima versione | ✅ Ultima versione |
 
-⚠️ **Nota** \
+### Visualizzatori HTML Predefiniti
+
 Faculty Editor si aprirà utilizzando il browser predefinito per i file HTML.
 
 - **Android** → Visualizzatore HTML (app di sistema)
