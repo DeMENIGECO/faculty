@@ -68,3 +68,29 @@ _**Definizione immagine qua sopra:** output finale di un commit esempio_
 
 In questo esempio, significa che il Git integrato in Faculty Editor ha messo il commit con nome "commit esempio per ciao.js" e ha messo l'hash `pZCwKVtRso6YUnu2Hm6a682HK6eAgmwjeJH4mjfa`
 
+---
+
+## Installa
+
+👉 [Ultima versione](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/installer.exe)
+
+|Versione| Link to Download | Supporto |
+|--------|------------------|----------|
+|1.0.0| [Installer .exe](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/installer.exe) | Supportata |
+
+## Browser supportati
+
+|   |   |   |   |   |
+|:-:|:-:|:-:|:-:|:-:|
+| ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/main/src/safari/safari_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/main/src/opera/opera_48x48.png) | ![Edge](https://raw.githubusercontent.com/alrra/browser-logos/main/src/edge/edge_48x48.png) |
+| **Chrome** | **Firefox** | **Safari** | **Opera** | **Edge** |
+| ✅ Ultima versione | ✅ Ultima versione | ✅ Ultima versione | ✅ Ultima versione | ✅ Ultima versione |
+
+⚠️ **Nota** \
+Faculty Editor si aprirà utilizzando il browser predefinito per i file HTML.
+
+- **Android** → Visualizzatore HTML (app di sistema)
+- **iOS / iPadOS / macOS** → Safari
+- **Windows** → Edge  
+  _(Windows 8.1 o versioni precedenti: Internet Explorer)_
+- **Linux** → Dipende dalla distribuzione e dal browser impostato
