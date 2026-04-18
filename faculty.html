@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Faculty Editor</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/theme/dracula.min.css">
+<style>
+html, body { margin:0; padding:0; height:100%; width:100%; font-family:Arial; overflow:hidden; }
+body { display:flex; flex-direction:column; }
+#menu { display:flex; background:#222; color:white; }
+.menu-item { position:relative; padding:10px 20px; cursor:pointer; }
+.menu-item:hover { background:#444; }
+.submenu, .subsubmenu { display:none; position:absolute; background:#333; min-width:150px; z-index:1000; }
+.submenu button, .subsubmenu button { width:100%; padding:8px 10px; background:none; border:none; color:white; text-align:left; cursor:pointer; }
+.submenu button:hover, .subsubmenu button:hover { background:#555; }
+.menu-item:hover .submenu { display:block; }
+.submenu .menu-item:hover .subsubmenu { display:block; left:100%; top:0; }
+#editor { flex-grow:1; height:calc(100% - 40px); }
+</style>
+</head>
+<body>
+
+<div id="menu">
+  <!-- File -->
+  <div class="menu-item">File
+    <div class="submenu">
+      <button onclick="newFile()">Nuovo</button>
+      <button onclick="openFile()">Apri</button>
+      <button onclick="saveFile()">Salva</button>
+      <button onclick="saveAs()">Salva come...</button>
+    </div>
+  </div>
+
+  <!-- Modifica -->
+  <div class="menu-item">Modifica
+    <div class="submenu">
+      <button onclick="undo()">Annulla</button>
+      <button onclick="redo()">Ripeti</button>
+      <button onclick="searchText()">Cerca</button>
+      <button onclick="replaceText()">Sostituisci</button>
+    </div>
+  </div>
+
+  <!-- Esegui -->
+  <div class="menu-item">Esegui
+    <div class="submenu">
+      <button onclick="runCode()">Esegui JS</button>
+    </div>
+  </div>
+
+  <!-- Impostazioni -->
+  <div class="menu-item">Impostazioni
+    <div class="submenu">
+      <div class="menu-item">Tema
+        <div class="subsubmenu">
+          <button onclick="setTheme('default')">Chiaro</button>
+          <button onclick="setTheme('dracula')">Scuro</button>
+          <button onclick="customTheme()">Personalizza Tema</button>
+        </div>
+      </div>
+      <div class="menu-item">Linguaggio
+        <div class="subsubmenu">
+          <button onclick="setLanguage('javascript')">JavaScript</button>
+          <button onclick="setLanguage('python')">Python</button>
+          <button onclick="setLanguage('htmlmixed')">HTML</button>
+          <button onclick="setLanguage('css')">CSS</button>
+          <button onclick="setLanguage('pastedtext')">Pasted Text</button>
+        </div>
+      </div>
+      <div class="menu-item">Codicing
+        <div class="subsubmenu">
+          <button onclick="setIndent(2)">Indentazione 2 spazi</button>
+          <button onclick="setIndent(4)">Indentazione 4 spazi</button>
+          <button onclick="setTabs()">Tab vs Spazi</button>
+          <button onclick="setLencoiding()">Lencoiding</button>
+          <button onclick="setEncoding()">Encoding</button>
+        </div>
+      </div>
+      <div class="menu-item">Globali
+        <div class="subsubmenu">
+          <button onclick="manageCustomThemes()">Temi Personalizzati</button>
+          <button onclick="preferences()">Preferenze Generali</button>
+          <div class="menu-item">Estensioni
+            <div class="subsubmenu">
+              <button onclick="toggleExtension('autocomplete')">Auto-completamento</button>
+              <button onclick="toggleExtension('jslint')">Linting JS</button>
+              <button onclick="toggleExtension('pythonHighlight')">Evidenziazione Python</button>
+              <button onclick="toggleExtension('extraThemes')">Temi aggiuntivi</button>
+              <button onclick="toggleExtension('snippets')">Snippets</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scorciatoie -->
+  <div class="menu-item">Scorciatoie
+    <div class="submenu">
+      <button>Ctrl+S → Salva</button>
+      <button>Ctrl+D → Tema scuro</button>
+      <button>Ctrl+B → Tema chiaro</button>
+      <button>Ctrl+Z → Annulla</button>
+      <button>Ctrl+Y → Ripeti</button>
+      <button>Ctrl+O → Funzioni sviluppatore</button>
+    </div>
+  </div>
+
+  <!-- Altro -->
+<div class="menu-item">Altro
+  <div class="submenu">
+    <button onclick="window.location.href = 'oi34/devtools.fclt.html'">Funzioni sviluppatore</button>
+    <button onclick="window.location.href = 'oi34/release.html' ">Note di Release</button>
+    <button onclick="window.location.href = 'oi34/version.html'">Versione</button>
+    <button onclick="window.location.href = 'oi34/about.html'">About Faculty Editor</button>
+  </div>
+</div>
+
+</div>
+
+
+<textarea id="editor"></textarea>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/search/searchcursor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/search/search.min.js"></script>
+
+<script>
+// Editor
+let editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+  lineNumbers: true,
+  mode: "javascript",
+  theme: "default",
+  indentUnit: 2,
+  autofocus: true,
+  viewportMargin: Infinity
+});
+
+// Salvataggio automatico
+const storageKey = "facultyEditorContent";
+editor.setValue(localStorage.getItem(storageKey) || "");
+editor.on("change", () => localStorage.setItem(storageKey, editor.getValue()));
+
+// File
+function newFile() { editor.setValue(""); localStorage.removeItem(storageKey); }
+function openFile() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.txt,.js,.html,.css,.py';
+  input.onchange = e => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = e => {
+      editor.setValue(e.target.result);
+      localStorage.setItem(storageKey, e.target.result);
+    };
+    reader.readAsText(file);
+  }
+  input.click();
+}
+function saveFile() {
+  const encoding = localStorage.getItem("facultyEditorEncoding") || "UTF-8";
+  const blob = new Blob([editor.getValue()], { type: `text/plain;charset=${encoding}` });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = "file.txt";
+  a.click();
+}
+function saveAs() { saveFile(); }
+
+// Modifica
+function undo() { editor.undo(); }
+function redo() { editor.redo(); }
+function searchText() {
+  const query = prompt("Testo da cercare:");
+  if(!query) return;
+  const cursor = editor.getSearchCursor(query);
+  if(cursor.findNext()) editor.setSelection(cursor.from(), cursor.to());
+  else alert("Testo non trovato!");
+}
+function replaceText() {
+  const query = prompt("Testo da sostituire:");
+  if(!query) return;
+  const replacement = prompt("Sostituire con:");
+  if(replacement===null) return;
+  const cursor = editor.getSearchCursor(query);
+  while(cursor.findNext()) cursor.replace(replacement);
+}
+
+// Impostazioni
+function setTheme(theme) { editor.setOption("theme", theme); }
+function customTheme() {
+  const bg = prompt("Colore sfondo (es. #282c34):");
+  const fg = prompt("Colore testo (es. #abb2bf):");
+  if(bg && fg) {
+    editor.getWrapperElement().style.background = bg;
+    editor.getWrapperElement().style.color = fg;
+  }
+}
+function setLanguage(lang) { editor.setOption("mode", lang==="pastedtext"?null:lang); }
+function setIndent(n) { editor.setOption("indentUnit", n); }
+function setTabs() { const useTabs = confirm("Vuoi usare TAB invece di spazi?"); editor.setOption("indentWithTabs", useTabs); }
+function setLencoiding() {
+  const lines = editor.getValue().split('\n');
+  const numbered = lines.map((line,i)=>`${i+1}: ${line}`).join('\n');
+  editor.setValue(numbered);
+}
+function setEncoding() {
+  const enc = prompt("Seleziona encoding: UTF-8, ISO-8859-1, UTF-16", "UTF-8");
+  if(!enc) return;
+  localStorage.setItem("facultyEditorEncoding", enc);
+}
+function manageCustomThemes() {
+  const themeName = prompt("Nome nuovo tema:");
+  if(!themeName) return;
+  const bg = prompt("Colore sfondo (es. #282c34):");
+  const fg = prompt("Colore testo (es. #abb2bf):");
+  if(bg && fg) {
+    const style = document.createElement('style');
+    style.innerHTML = `.cm-s-${themeName} .CodeMirror { background: ${bg}; color: ${fg}; }`;
+    document.head.appendChild(style);
+  }
+}
+function preferences() {
+  const lineWrap = confirm("Vuoi abilitare l'andata a capo automatica?");
+  editor.setOption("lineWrapping", lineWrap);
+}
+
+// Estensioni
+let extensions = { autocomplete:false, jslint:false, pythonHighlight:false, extraThemes:false, snippets:false };
+function toggleExtension(name) {
+  extensions[name] = !extensions[name];
+}
+editor.on("change", () => {
+  if(extensions.autocomplete && editor.getOption("mode")==="javascript") {
+    const cursor = editor.getCursor();
+    const token = editor.getTokenAt(cursor);
+    if(token.string === "con") editor.replaceRange("console.log", {line:cursor.line,ch:token.start},{line:cursor.line,ch:token.end});
+  }
+});
+
+// Esegui JS
+function runCode() {
+  if(editor.getOption("mode")!=="javascript") return;
+  try { new Function(editor.getValue())(); }
+  catch(e) {}
+}
+
+// Controllo errori JS live
+editor.on("change", () => {
+  if(editor.getOption("mode")==="javascript") {
+    try { new Function(editor.getValue()); editor.getWrapperElement().style.border="2px solid green"; }
+    catch(e) { editor.getWrapperElement().style.border="2px solid red"; }
+  } else editor.getWrapperElement().style.border="2px solid #ccc";
+});
+
+// Fullscreen automatico
+document.documentElement.requestFullscreen?.();
+
+// Shortcut da tastiera
+document.addEventListener('keydown', (e) => {
+  if(e.ctrlKey && e.key.toLowerCase() === 's'){ e.preventDefault(); saveFile(); }
+  if(e.ctrlKey && e.key.toLowerCase() === 'd'){ e.preventDefault(); setTheme('dracula'); }
+  if(e.ctrlKey && e.key.toLowerCase() === 'b'){ e.preventDefault(); setTheme('default'); }
+  if(e.ctrlKey && e.key.toLowerCase() === 'z'){ e.preventDefault(); undo(); }
+  if(e.ctrlKey && e.key.toLowerCase() === 'y'){ e.preventDefault(); redo(); }
+  if(e.ctrlKey && e.key.toLowerCase() === 'o'){ e.preventDefault(); window.location.href = 'oi34/devtools.fclt.html'; 
+  e.preventDefault();
+  }
+});
+</script>
+
+</body>
+</html>

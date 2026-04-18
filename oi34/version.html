@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Versione – Faculty Editor</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 40px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #222;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #007acc;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #005fa3;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📜 Versione di Faculty Editor</h1>
+    <h2>Versione 1.0.0 – 18 Febbaraio 2026 <button onclick="copyToClipboard('Versione 1.0.0 – 18 Febbaraio 2026')"> 📋</button></h2>
+
+    <a href="../faculty.html" class="button">← Torna all'editor</a>
+    <a href="release.html" class="button">Release notes</a>
+  </div>
+
+  <script>
+    function copyToClipboard(text) {
+    navigator.clipboard.writeText(text)
+        .then(() => {
+            alert("Testo copiato!");
+        })
+        .catch(err => {
+            alert("Errore nella copia");
+            console.error(err);
+        });
+}
+  </script>
+</body>
+</html>
