@@ -90,6 +90,8 @@ In questo esempio, significa che il Git integrato in Faculty Editor ha messo il 
 |:--------:|:--------:|:--------:|:---------------:|
 | **1.0.0** | [⬇️ Installer (.exe)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/installer.exe) | ✅ Supportata | `oi34` |
 
+---
+
 ## Browser supportati
 
 ### Versioni browser
