@@ -63,7 +63,7 @@ Usate CTRL-O per entrare nei DevTools.
 >
 > Se utilizzi un dispositivo Apple, il tasto `CTRL` è sostituito dal tasto `⌘` (Command).
 >
-> Per accedere alle impostazioni richieste:
+> Per accedere ai DevTools:
 > **Altro → Opzioni sviluppatore**
 
 Facciamo un commit del nostro `ciao.js`! \
