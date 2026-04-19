@@ -83,12 +83,12 @@ In questo esempio, significa che il Git integrato in Faculty Editor ha messo il 
 
 ## Installa
 
-👉 [Ultima versione](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/installer.exe)
+👉 [Ultima versione (Installer per Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/installer.exe)
 
 
 | Versione | Download | Supporto | Codice versione |
 |:--------:|:--------:|:--------:|:---------------:|
-| **1.0.0** | [⬇️ Installer (.exe)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/installer.exe) | ✅ Supportata | `oi34` |
+| **1.0.0** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/installer.exe) | ✅ Supportata | `oi34` |
 
 ---
 
