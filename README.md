@@ -15,6 +15,7 @@ _**Definizione immagine qua sopra:** Ecco uno script Python esempio_
 - [Browser supportati](#browser-supportati)
   - [Versioni browser](#versioni-browser)
   - [Visualizzatori HTML Predefiniti](#visualizzatori-html-predefiniti)
+
 ---
 
 ## About Faculty Editor
@@ -57,6 +58,13 @@ _**Definizione video qua sopra:** Come dovrebbe essere sui DevTools di un comune
 >Al momento i DevTools NON sono disponibili in Italiano.
 
 Usate CTRL-O per entrare nei DevTools.
+
+> 💡 **Nota per utenti Apple**
+>
+> Se utilizzi un dispositivo Apple, il tasto `CTRL` è sostituito dal tasto `⌘` (Command).
+>
+> Per accedere alle impostazioni richieste:
+> **Altro → Opzioni sviluppatore**
 
 Facciamo un commit del nostro `ciao.js`! \
 Cliccate prima di tutto sul tasto configure, e potete inserire delle credenziali false, poi il nome della repo locale
