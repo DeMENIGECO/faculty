@@ -115,8 +115,7 @@ In questo esempio, significa che il Git integrato in Faculty Editor ha messo il 
 
 Faculty Editor si aprirà utilizzando il browser predefinito per i file HTML.
 
-- **Android** → Visualizzatore HTML (app di sistema)
-- **iOS / iPadOS / macOS** → Safari
+- **macOS** → Safari
 - **Windows** → Edge  
   _(Windows 8.1 o versioni precedenti: Internet Explorer)_
 - **Linux** → Dipende dalla distribuzione e dal browser impostato
