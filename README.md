@@ -55,7 +55,10 @@ _**Definizione video qua sopra:** Come dovrebbe essere sui DevTools di un comune
 ## DevTools
 
 >[!TIP]
->Al momento i DevTools NON sono disponibili in Italiano.
+>Nella 1.0.1+ abbiamo messo i DevTools in Italiano, ma per accederli dovrai andare nei DevTools con CTRL-O -> Go to DevTools in Italian.
+>
+>**In questo README Abbiamo messo la versione in inglese. Puoi leggere maggiori informazioni sui DevTools in Italiano qua:** \
+>[Vai](https://github.com/DeMENIGECO/faculty/tree/main/i6oo/devtools-langs-readme/it.md)
 
 Usate CTRL-O per entrare nei DevTools.
 
@@ -98,7 +101,7 @@ In questo esempio, significa che il Git integrato in Faculty Editor ha messo il 
 | Versione | Download | Supporto | Codice versione |
 |:--------:|:--------:|:--------:|:---------------:|
 | **1.0.0** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/faculty-editor-100.zip)| ✅ Supportata | `oi34` |
-| **1.0.0** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/faculty-editor-101.zip)| ✅ Supportata | `i6oo` |
+| **1.0.1** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/faculty-editor-101.zip)| ✅ Supportata | `i6oo` |
 
 ---
 
