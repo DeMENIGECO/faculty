@@ -165,4 +165,10 @@ Qui puoi installare e disinstallare tante estensioni per migliorare la tua esper
 
 - Faculty Editor Base Themes  
 - Faculty Editor Base Languages  
-- Faculty Editor STA SZA  
+- Faculty Editor STA SZA
+
+
+
+https://github.com/user-attachments/assets/c1260de1-d67c-4b99-80bc-60ec78656bb2
+
+_**Definizione video qua sopra:** Ecco un'esempio di installazione/disinstallazione di estensioni_
