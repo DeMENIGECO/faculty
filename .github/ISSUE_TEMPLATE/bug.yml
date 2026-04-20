@@ -1,0 +1,82 @@
+name: "🐞 Bug Report"
+description: Segnala un bug in Faculty Editor
+title: "[BUG] "
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grazie per aver segnalato un bug! 🐞  
+        Compila tutte le sezioni per aiutarci a risolverlo più velocemente.
+
+  - type: input
+    id: version
+    attributes:
+      label: Versione di Faculty Editor
+      description: Che versione stai usando?
+      placeholder: es. 1.2.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Sistema operativo
+      options:
+        - Windows 11
+        - Windows 10
+        - Linux
+        - macOS
+        - Altro
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrizione del bug
+      description: Spiega chiaramente cosa succede
+      placeholder: Cosa non funziona?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Come riprodurre il bug
+      description: Passaggi per vedere il problema
+      placeholder: |
+        1. Vai su...
+        2. Clicca su...
+        3. Succede che...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento previsto
+      description: Cosa dovrebbe succedere invece?
+      placeholder: Doveva fare...
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshot o video
+      description: Se possibile, aggiungi immagini o video
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log / Errori
+      description: Incolla eventuali errori o log
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Informazioni aggiuntive
+      description: Qualsiasi altra cosa utile
