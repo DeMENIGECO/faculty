@@ -15,6 +15,7 @@ _**Definizione immagine qua sopra:** Ecco uno script Python esempio_
 - [Browser supportati](#browser-supportati)
   - [Versioni browser](#versioni-browser)
   - [Visualizzatori HTML Predefiniti](#visualizzatori-html-predefiniti)
+- [🆕 Extensions Marketplace](#extensions-marketplace)
 
 ---
 
@@ -58,7 +59,7 @@ _**Definizione video qua sopra:** Come dovrebbe essere sui DevTools di un comune
 >Nella 1.0.1+ abbiamo messo i DevTools in Italiano, ma per accederli dovrai andare nei DevTools con CTRL-O -> Go to DevTools in Italian.
 >
 >**In questo README Abbiamo messo la versione in inglese. Puoi leggere maggiori informazioni sui DevTools in Italiano qua:** \
->[Vai](https://github.com/DeMENIGECO/faculty/tree/main/i6oo/devtools-langs-readme/it.md)
+>[Vai](https://github.com/DeMENIGECO/faculty/blob/main/i6oo/devtools-langs-readmes/it.md)
 
 Usate CTRL-O per entrare nei DevTools.
 
@@ -123,3 +124,45 @@ Faculty Editor si aprirà utilizzando il browser predefinito per i file HTML.
 - **Windows** → Edge  
   _(Windows 8.1 o versioni precedenti: Internet Explorer)_
 - **Linux** → Dipende dalla distribuzione e dal browser impostato
+
+---
+
+## Extensions Marketplace
+
+> ✅ **Disponibile dalla versione 1.0.1 in poi**
+
+Vai su **Menu Altro → Extensions Marketplace**.
+
+Qui puoi installare e disinstallare tante estensioni per migliorare la tua esperienza.
+
+**Ecco le RACCOMANDAZIONI**
+
+- 🌐 **HTML**
+  - *HTML Booster*
+
+- 🐍 **Python**
+  - *Python Helper*
+  - *Python Super Extension*  
+  - 🤩 **Combo assurda per lavorare al top!**
+
+- 🎨 **Temi**
+  - *Envolved Theme*  
+  - ⚪ *Envolved Theme Blank* (tema chiaro)
+
+- 🤖 **Assistenti IA**
+  - *AI Assist*
+  - *Copilot*  
+  - 😏 Puoi usare anche solo *Copilot* (integrato con GitHub)
+
+- 🛠️ **DevTools**
+  - *Chrome DevTools in Faculty Editor*
+
+- 🌙 **Tema scuro stile VS Code**
+  - *Dark Theme+*  
+  - 😛 Molto realistico (⭐ 4.7 stelle)
+
+**Ecco le Estensioni di default (non disattivabili)**
+
+- Faculty Editor Base Themes  
+- Faculty Editor Base Languages  
+- Faculty Editor STA SZA  
