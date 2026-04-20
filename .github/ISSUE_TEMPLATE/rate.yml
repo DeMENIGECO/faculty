@@ -1,0 +1,35 @@
+name: Rate Faculty Editor
+description: Share your feedback!
+title: "[RATE] Faculty Editor"
+labels: [feedback, rating]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        *Rate Faculty Editor* 😊
+  - type: dropdown
+    id: stars
+    attributes:
+      label: ⭐ Quante stelle?
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+    validations:
+      required: true
+  - type: input
+    id: mention
+    attributes:
+      label: 📝 Menzione GitHub
+      placeholder: "@username"
+    validations:
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: 📄 Descrizione
+      placeholder: Cosa ti è piaciuto/non piaciuto?
+    validations:
+      required: false
