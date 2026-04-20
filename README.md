@@ -19,6 +19,10 @@ _**Definizione immagine qua sopra:** Ecco uno script Python esempio_
 
 ---
 
+>Scusate, ma le note di Release della 1.0.0 e della 1.0.1 hanno un typo nel mese ma nella 1.0.2 lo fixeremo tranquilli :D
+
+---
+
 ## About Faculty Editor
 
 Faculty Editor è un'editor di testo semplice, minimalista e intuitivo. E' progettato per essere facile da usare e fornire una esperienza di editing fluida. \
