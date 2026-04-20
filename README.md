@@ -4,6 +4,8 @@
 
 _**Definizione immagine qua sopra:** Ecco uno script Python esempio_
 
+>Scusate, ma le note di Release della 1.0.0 e della 1.0.1 hanno un typo nel mese ma nella 1.0.2 lo fixeremo tranquilli :D
+
 ---
 
 ## Tabella dei contenuti
@@ -16,10 +18,6 @@ _**Definizione immagine qua sopra:** Ecco uno script Python esempio_
   - [Versioni browser](#versioni-browser)
   - [Visualizzatori HTML Predefiniti](#visualizzatori-html-predefiniti)
 - [🆕 Extensions Marketplace](#extensions-marketplace)
-
----
-
->Scusate, ma le note di Release della 1.0.0 e della 1.0.1 hanno un typo nel mese ma nella 1.0.2 lo fixeremo tranquilli :D
 
 ---
 
