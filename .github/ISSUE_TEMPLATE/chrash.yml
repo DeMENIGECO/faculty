@@ -1,0 +1,74 @@
+name: "💥 Crash Report"
+description: Segnala un crash improvviso di Faculty Editor
+title: "[CRASH] "
+labels: ["crash", "bug"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        🚨 Faculty Editor è crashato?  
+        Compila questo report per aiutarci a capire cosa è successo.
+
+  - type: input
+    id: version
+    attributes:
+      label: Versione di Faculty Editor
+      placeholder: es. 1.2.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Sistema operativo
+      options:
+        - Windows 11
+        - Windows 10
+        - Linux
+        - macOS
+        - Altro
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: Cosa è successo?
+      description: Descrivi il crash
+      placeholder: L'app si è chiusa improvvisamente quando...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Come riprodurre il crash
+      placeholder: |
+        1. Apri...
+        2. Clicca...
+        3. Crash 💥
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log / Errori
+      description: Incolla qui eventuali errori (molto importante!)
+      placeholder: Stack trace, errori console, ecc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: system
+    attributes:
+      label: Info sistema (opzionale ma utile)
+      placeholder: RAM, CPU, GPU...
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Informazioni aggiuntive
+      description: Qualsiasi dettaglio utile (plugin attivi, file aperti, ecc.)
