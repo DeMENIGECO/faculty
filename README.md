@@ -4,8 +4,6 @@
 
 _**Definizione immagine qua sopra:** Ecco uno script Python esempio_
 
->Scusate, ma le note di Release della 1.0.0 e della 1.0.1 hanno un typo nel mese ma nella 1.0.2 lo fixeremo tranquilli :D
-
 ---
 
 ## Tabella dei contenuti
@@ -17,7 +15,7 @@ _**Definizione immagine qua sopra:** Ecco uno script Python esempio_
 - [Browser supportati](#browser-supportati)
   - [Versioni browser](#versioni-browser)
   - [Visualizzatori HTML Predefiniti](#visualizzatori-html-predefiniti)
-- [🆕 Extensions Marketplace](#extensions-marketplace)
+- [Extensions Marketplace](#extensions-marketplace)
 
 ---
 
@@ -105,7 +103,7 @@ In questo esempio, significa che il Git integrato in Faculty Editor ha messo il 
 |:--------:|:--------:|:--------:|:---------------:|
 | **1.0.0** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/faculty-editor-100.zip)| ✅ Supportata | `oi34` |
 | **1.0.1** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/faculty-editor-101.zip)| ✅ Supportata | `i6oo` |
-| **1.0.1** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.2/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.2/faculty-editor-102.zip)| ✅ Supportata | `wa40` |
+| **1.0.2** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.2/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.2/faculty-editor-102.zip)| ✅ Supportata | `wa40` |
 
 ---
 
