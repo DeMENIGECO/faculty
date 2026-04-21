@@ -1,0 +1,215 @@
+<title>DevTools (Deutsch GE)</title>
+
+<style>
+/* Font */
+
+body {
+  font-family: "Segoe UI"
+}
+
+/* Elementi principali */
+
+h1 {
+  text-align: center;
+  color: #00ff00;
+}
+
+h2 {
+  text-align: center;
+  color: #3cb371;   
+}
+
+p {
+  text-align: center;
+  color: #000000;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+button:hover {
+    background-color: #218838;
+}
+   
+
+/* Altri style */
+
+.avvertence {
+    cursor: pointer;
+    border: 10px;
+    background-color: beige;
+    transition: background-color 0.3s;
+}
+
+.avvertence:hover {
+    background-color: rgb(177, 177, 141);
+}
+
+.avvertence h2 {
+    color: #000000;
+    text-align: left;
+}
+
+.avvertence p {
+    color: #000000;
+    text-align: left;
+}
+
+.avvertence button {
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.avvertence button:hover {
+    background-color: #8c9a4b;
+}
+
+#prompt-input {
+  width: 80%;
+  height: 40px;
+  font-family: monospace;
+}
+
+#output {
+  background: black;
+  color: #00ff00;
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+  font-family: monospace;
+  text-align: left;
+  white-space: pre-wrap;
+}
+</style>
+
+<div class="avvertence" onclick="window.location.href = '../../faculty.html' ">
+    <h2>
+        Gehe zu Faculty Editor
+    </h2>
+    <button onclick="window.location.href = '../../faculty.html' ">
+        Gehe zu Faculty Editor
+    </button>
+</div>
+
+<!-- Finto Git -->
+
+<h1>Git</h1>
+
+<p>Repository für Commit und Wiederherstellung: <b>null</b> <button onclick="cfg()">Konfigurieren</button></p>
+<p>
+<button onclick="commit()">Commit</button>
+<button onclick="push()">Push</button>
+<button onclick="restore()">Wiederherstellen</button>
+</p>
+
+<!-- Terminal Unix-style-->
+
+<h1>Terminal</h1>
+<textarea id="prompt-input" placeholder="Gib einen Befehl ein (die Ausgabe ist ebenfalls auf Englisch)"></textarea><button onclick="execCmd()">Ausführen</button>
+<pre id="output"></pre>
+
+<!--Info DevTools-->
+<h1>Informationen zu DevTools</h1>
+<p>Faculty Editor DevTools v3</p>
+<p>Build-Code KA93KEVN0UB8S</p>
+
+<script>
+    function commit() {
+        const message = prompt("Commit-Nachricht eingeben:");
+        const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        let hash = "";
+        for (let i = 0; i < 40; i++) {
+            hash += chars.charAt(Math.floor(Math.random() * chars.length));
+        } 
+        prompt(`Commit mit folgender Nachricht erstellt: "${message}"\nHash: siehe den vorausgefüllten Wert (Verwende den Hash, um die Daten wiederherzustellen; du kannst ihn später nicht mehr einsehen, also notiere ihn!)`, hash);
+    }
+
+    function push() {
+        const repo = prompt("Repository eingeben: (Zum Beispiel: für URLs https://github.com/username/repo.git oder, wenn es sich um ein lokales Git-Repository handelt, repository_name.)");
+        alert(`Push durchgeführt auf ${repo}`);
+    }
+
+    function restore() {
+        const hash = prompt("Commit-Hash eingeben, der wiederhergestellt werden soll:");
+        alert(`Das Repository wurde auf den Commit mit dem Hash ${hash} wiederhergestell`);
+}
+
+    function cfg() {
+    const name = prompt("Name eingeben:");
+    const email = prompt("E-Mail-Adresse eingeben:");
+    const reponame = prompt("Name des Repositorys eingeben:");
+
+    if (reponame.includes("http://") || reponame.includes("https://")) {
+        try {
+            const domain = new URL(reponame).hostname.split('.')[0];
+            alert(`400: Ungültige Anfrage. Der Server ${domain} hat die Anfrage blockiert. Bitte verwenden Sie lokale Git-Repositories.`);
+        } catch (e) {
+            alert("Ungültige URL.");
+        }
+    } else {
+        alert(`Git konfiguriert mit dem Namen: ${name} und der E-Mail-Adresse: ${email}, Repository: ${reponame}`);
+        const bTag = document.querySelector("b");
+        bTag.textContent = reponame;
+    }
+}
+
+    function execCmd() {
+    const input = document.getElementById("prompt-input");
+    const output = document.getElementById("output");
+
+    const cmd = input.value.trim();
+    if (!cmd) return;
+
+    const responses = {
+        "ls": "FacultyEditorOpenedFiles",
+        "pwd": "FacultyEditorExecutingPath",
+        "git status": "On branch main\nnothing to commit, working tree clean",
+        "help":"Available commands:\n- ls: List opened files\n- pwd: Show executing path\n- git status: Show git status\n- sudo apt install [package]: Package installation\n- sudo apt remove [package]: Package removal\n- sudo apt run [package]: Running a package"
+    };
+
+    let result = "Command not recognized";
+
+    if (responses[cmd]) {
+        result = responses[cmd];
+    }
+    else if (cmd.startsWith("sudo apt install ")) {
+        const pkg = cmd.replace("sudo apt install ", "");
+        result = `Installing ${pkg}... Done!`;
+    }
+    else if (cmd.startsWith("sudo apt remove ")) {
+        const pkg = cmd.replace("sudo apt remove ", "");
+        result = `Removing ${pkg}... Done!`;
+    }
+    else if (cmd.startsWith("sudo apt run ")) {
+        const pkg = cmd.replace("sudo apt run ", "");
+        result = `Running ${pkg}...`;
+    }
+
+    // output stile terminale
+    output.textContent += `> ${cmd}\n${result}\n\n`;
+
+    // scroll automatico
+    output.scrollTop = output.scrollHeight;
+
+    input.value = "";
+}
+</script>
