@@ -97,14 +97,15 @@ In questo esempio, significa che il Git integrato in Faculty Editor ha messo il 
 
 ## Installa
 
-👉 [Ultima versione (Installer per Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/installer.exe) \
-👉 [Ultima Versione (codice sorgente .zip multipiattaforma)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/faculty-editor-101.zip)
+👉 [Ultima versione (Installer per Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.2/installer.exe) \
+👉 [Ultima Versione (codice sorgente .zip multipiattaforma)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.2/faculty-editor-102.zip)
 
 
 | Versione | Download | Supporto | Codice versione |
 |:--------:|:--------:|:--------:|:---------------:|
 | **1.0.0** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/faculty-editor-100.zip)| ✅ Supportata | `oi34` |
 | **1.0.1** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/faculty-editor-101.zip)| ✅ Supportata | `i6oo` |
+| **1.0.1** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.2/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.2/faculty-editor-102.zip)| ✅ Supportata | `wa40` |
 
 ---
 
