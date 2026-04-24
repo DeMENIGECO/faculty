@@ -101,11 +101,16 @@ body { display:flex; flex-direction:column; }
   <!-- Altro -->
 <div class="menu-item">Altro
   <div class="submenu">
-    <button onclick="window.location.href = 'wa40/devtools.fclt.html'">Funzioni sviluppatore</button>
-    <button onclick="window.location.href = 'wa40/release.html' ">Note di Release</button>
-    <button onclick="window.location.href = 'wa40/version.html'">Versione</button>
-    <button onclick="window.location.href = 'wa40/about.html'">About Faculty Editor</button>
-    <button onclick="openMarketplace()">Extensions Marketplace</button>
+    <button onclick="window.location.href = 'roS3/devtools.fclt.html'">Funzioni sviluppatore</button>
+    <button onclick="window.location.href = 'roS3/release.html' ">Note di Release</button>
+    <button onclick="window.location.href = 'roS3/version.html'">Versione</button>
+    <button onclick="window.location.href = 'roS3/about.html'">About Faculty Editor</button>
+    <div class="menu-item">Funzioni rapide
+      <div class="subsubmenu">
+        <button onclick="openMarketplace()">Extensions Marketplace</button>
+        <button onclick="openAi()">Faculty AI</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -122,7 +127,8 @@ body { display:flex; flex-direction:column; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/htmlmixed/htmlmixed.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/search/searchcursor.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/search/search.min.js"></script>
-<script src="wa40/scripts/marketplace-open.js"></script>
+<script src="roS3/scripts/marketplace-open.js"></script>
+<script src="roS3/scripts/ai-open.js"></script>
 
 <script>
 // Editor
@@ -263,7 +269,7 @@ document.addEventListener('keydown', (e) => {
   if(e.ctrlKey && e.key.toLowerCase() === 'b'){ e.preventDefault(); setTheme('default'); }
   if(e.ctrlKey && e.key.toLowerCase() === 'z'){ e.preventDefault(); undo(); }
   if(e.ctrlKey && e.key.toLowerCase() === 'y'){ e.preventDefault(); redo(); }
-  if(e.ctrlKey && e.key.toLowerCase() === 'o'){ e.preventDefault(); window.location.href = 'wa40/devtools.fclt.html';
+  if(e.ctrlKey && e.key.toLowerCase() === 'o'){ e.preventDefault(); window.location.href = 'roS3/devtools.fclt.html';
   e.preventDefault();
   }
 });
