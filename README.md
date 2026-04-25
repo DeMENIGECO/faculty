@@ -101,7 +101,7 @@ In questo esempio, significa che il Git integrato in Faculty Editor ha messo il 
 
 | Versione | Download | Supporto | Codice versione |
 |:--------:|:--------:|:--------:|:---------------:|
-| **1.0.3** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.3/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.3/faculty-editor-103.zip)| ✅ Supportata | `wa40` |
+| **1.0.3** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.3/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.3/faculty-editor-103.zip)| ✅ Supportata | `roS3` |
 | **1.0.2** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.2/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.2/faculty-editor-102.zip)| ✅ Supportata | `wa40` |
 | **1.0.1** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.1/faculty-editor-101.zip)| ✅ Supportata | `i6oo` |
 | **1.0.0** | [⬇️ Installer (Windows)](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/installer.exe) [ ⬇️ Codice sorgente .zip](https://github.com/DeMENIGECO/faculty/releases/download/1.0.0/faculty-editor-100.zip)| ✅ Supportata | `oi34` |
