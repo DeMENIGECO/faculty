@@ -136,6 +136,9 @@ Faculty Editor si aprirà utilizzando il browser predefinito per i file HTML.
 
 Vai su **Menu Altro → Extensions Marketplace**.
 
+>[!NOTE]
+>Nella 1.0.3 L'extensions marketplace è stato spostato in **Altro → Funzioni Rapide → Extensions marketplace**
+
 Qui puoi installare e disinstallare tante estensioni per migliorare la tua esperienza.
 
 **Ecco le RACCOMANDAZIONI**
