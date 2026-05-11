@@ -59,7 +59,7 @@ _**Definizione video qua sopra:** Come dovrebbe essere sui DevTools di un comune
 >Nella 1.0.1+ abbiamo messo i DevTools in Italiano, ma per accederli dovrai andare nei DevTools con CTRL-O -> Go to DevTools in Italian.
 >
 >**In questo README Abbiamo messo la versione in inglese. Puoi leggere maggiori informazioni sui DevTools in Italiano qua:** \
->[Vai](https://github.com/DeMENIGECO/faculty/blob/main/roS3/devtools-langs-readmes/it.md)
+>[Vai](https://github.com/DeMENIGECO/faculty/blob/main/xsh1/devtools-langs-readmes/it.md)
 
 Usate CTRL-O per entrare nei DevTools.
 
