@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faculty Editor AI</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #121212;
+  color: white;
+}
+
+/* LAYOUT */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 230px;
+  background: #0d0d0d;
+  padding: 10px;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+}
+
+.sidebar button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOPBAR */
+.topbar {
+  background: #1e1e1e;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* CHAT */
+.chat {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  background: #181818;
+}
+
+.msg {
+  margin: 10px 0;
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.user {
+  background: #2f2f2f;
+  margin-left: auto;
+}
+
+.ai {
+  background: #1f1f1f;
+}
+
+/* INPUT */
+.input-area {
+  display: flex;
+  padding: 10px;
+  background: #1e1e1e;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+/* BUTTON */
+button {
+  background: #4caf50;
+  border: none;
+  padding: 8px 12px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-box {
+  background:#222;
+  padding:20px;
+  border-radius:10px;
+  width:320px;
+}
+
+.modal input {
+  width:100%;
+  margin:5px 0;
+}
+
+.tool-btn {
+  display:block;
+  width:100%;
+  margin:5px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h3>🤖 Faculty AI</h3>
+    <button onclick="openTools()">⚙️ AI Tools</button>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="topbar">
+      <span id="statusMsg"></span>
+      <button onclick="openAuth()" id="authBtn"></button>
+    </div>
+
+    <div class="chat" id="chat"></div>
+
+    <div class="input-area">
+      <input type="text" id="input" placeholder="Type a message..." />
+      <button onclick="send()">Send</button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- LOGIN -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h3 id="formTitle">Login</h3>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="submitAuth()" id="mainBtn">Login</button>
+
+    <p id="switchText">
+      Don't have an account?
+      <span onclick="toggleMode()" style="color:#4caf50; cursor:pointer;">Sign Up</span>
+    </p>
+
+    <button onclick="closeAuth()">Close</button>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="modal" id="toolsModal">
+  <div class="modal-box">
+    <h3>AI Tools</h3>
+
+    <button onclick="showSnippets()">📦 Snippets</button>
+    <button onclick="showQuestions()">💬 Questions</button>
+
+    <div id="toolsContent" style="margin-top:10px; max-height:200px; overflow:auto;"></div>
+
+    <button onclick="closeTools()">Close</button>
+  </div>
+</div>
+
+<script>
+
+/* ACCOUNT */
+let isLogin = true;
+
+function initAccount(){
+  const user = localStorage.getItem("fa_user");
+
+  if(user){
+    statusMsg.innerText = "Hello " + user + "!";
+    authBtn.innerText = "Logout";
+  } else {
+    statusMsg.innerText = "For a better experience, please log in to your Faculty AI Account";
+    authBtn.innerText = "Login";
+  }
+}
+
+function openAuth(){
+  const user = localStorage.getItem("fa_user");
+  if(user){ logout(); return; }
+  modal.style.display = "flex";
+}
+
+function closeAuth(){ modal.style.display = "none"; }
+
+function toggleMode(){
+  isLogin = !isLogin;
+  formTitle.innerText = isLogin ? "Login" : "Sign Up";
+  mainBtn.innerText = isLogin ? "Login" : "Sign Up";
+
+  switchText.innerHTML = isLogin
+    ? `Don't have an account? <span onclick="toggleMode()" style="color:#4caf50; cursor:pointer;">Sign Up</span>`
+    : `Already have an account? <span onclick="toggleMode()" style="color:#4caf50; cursor:pointer;">Login</span>`;
+}
+
+function submitAuth(){
+  const u = username.value.trim();
+  const p = password.value.trim();
+
+  if(!u || !p) return alert("Compile the fields!");
+
+  if(isLogin){
+    if(u === localStorage.getItem("fa_user") && p === localStorage.getItem("fa_pass")){
+      alert("Login successful!");
+      closeAuth();
+      initAccount();
+    } else alert("Invalid credentials!");
+  } else {
+    localStorage.setItem("fa_user", u);
+    localStorage.setItem("fa_pass", p);
+    alert("Registration successful!");
+    closeAuth();
+    initAccount();
+  }
+}
+
+function logout(){
+  localStorage.clear();
+  initAccount();
+}
+
+/* CHAT */
+let chat;
+
+window.onload = () => {
+  chat = document.getElementById("chat");
+  initAccount();
+};
+
+function addMsg(text, type){
+  const div = document.createElement("div");
+  div.className = "msg " + type;
+  div.innerText = text;
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+/* AI */
+const answers = {
+  "hello": "Hello! 👋 I'm Faculty AI!",
+  "how are you": "I'm doing great! 😎",
+  "who are you": "I'm Faculty Editor AI, your coding assistant!",
+  "what's your name":"My name is Faculty Editor AI, but you can call me F.E.AI or just Faculty!",
+
+  "what is html": "HTML is the language for creating web pages.",
+  "what is css": "CSS is the language for styling web pages.",
+  "what is javascript": "JavaScript is the language for making web pages interactive.",
+  "what is python": "Python is a simple and powerful programming language.",
+
+  "make me a html site": "<html>\n  <body>\n    <h1>Hello</h1>\n  </body>\n</html>",
+  "give me base css": "body { background:#000; color:#fff; }",
+  "write javascript": "console.log('Hello world');",
+  "write python": "print('Hello world')",
+
+  "loop js": "for(let i=0;i<10;i++){ console.log(i); }",
+  "if js": "if(x > 5){ console.log('ok'); }",
+  "funzione js": "function ciao(){ return 'ciao'; }",
+
+  "array js": "let arr = [1,2,3];",
+  "object js": "let obj = {nome:'Domenico'};",
+
+  "fetch": "fetch('url').then(r=>r.json()).then(d=>console.log(d));",
+  "dom": "document.getElementById('id')",
+  "event": "element.addEventListener('click', ()=>{});",
+
+  "while": "while(true){}",
+
+  "python loop": "for i in range(10): print(i)",
+  "python if": "if x > 5:\n  print('ok')",
+
+  "flexbox": "display:flex;",
+  "grid": "display:grid;",
+
+  "button html": "<button>Click Me</button>",
+  "input html": "<input type='text'>",
+
+  "localstorage": "localStorage.setItem('key','value');",
+
+  "json": "JSON.stringify(obj)",
+  "parse": "JSON.parse(str)",
+
+  "settimeout": "setTimeout(()=>{},1000)",
+  "setinterval": "setInterval(()=>{},1000)",
+
+  "random": "Math.random()",
+
+  "alert": "alert('Hello')",
+  "prompt": "prompt('Write something')",
+
+  "class": "class Person {}",
+
+  "api": "API = comunication between programs",
+
+  "backend": "Backend = server side",
+  "frontend": "Frontend = client side",
+
+  "errore": "Check the console (F12)",
+  "debug": "Use console.log()"
+};
+
+function aiResponse(text){
+  text = text.toLowerCase();
+  for(let k in answers){
+    if(text.includes(k)) return answers[k];
+  }
+  return "I didn't understand 🤔";
+}
+
+function send(){
+  const text = input.value;
+  if(!text) return;
+
+  addMsg(text, "user");
+
+  setTimeout(()=>{
+    addMsg(aiResponse(text), "ai");
+  }, 400);
+
+  input.value = "";
+}
+
+/* TOOLS */
+function openTools(){ toolsModal.style.display = "flex"; }
+function closeTools(){ toolsModal.style.display = "none"; }
+
+/* SNIPPETS */
+const snippets = [
+
+/* JS */
+"console.log('Hello world');",
+"alert('Ciao');",
+"let x = 10;",
+"const PI = 3.14;",
+"if(x > 5){ console.log('ok'); }",
+"for(let i=0;i<10;i++){ console.log(i); }",
+"while(true){}",
+"function ciao(){ return 'ciao'; }",
+"setTimeout(()=>{},1000);",
+"setInterval(()=>{},1000);",
+"Math.random();",
+"Math.floor(4.5);",
+"JSON.stringify(obj);",
+"JSON.parse(str);",
+"fetch('url').then(r=>r.json());",
+"document.getElementById('id');",
+"element.addEventListener('click', ()=>{});",
+"localStorage.setItem('k','v');",
+"localStorage.getItem('k');",
+"localStorage.removeItem('k');",
+"class Persona {}",
+"constructor(){}",
+"try{}catch(e){}",
+"switch(x){case 1: break;}",
+
+/* HTML */
+"<html></html>",
+"<body></body>",
+"<h1>TTitle</h1>",
+"<p>Text</p>",
+"<button>Click Me</button>",
+"<input type='text'>",
+"<input type='password'>",
+"<a href='#'>Link</a>",
+"<img src='img.png'>",
+"<video controls></video>",
+"<audio controls></audio>",
+"<div></div>",
+"<span></span>",
+"<ul><li>Item</li></ul>",
+"<form></form>",
+
+/* CSS */
+"body { background:black; color:white; }",
+"display:flex;",
+"justify-content:center;",
+"align-items:center;",
+"display:grid;",
+"grid-template-columns: 1fr 1fr;",
+"margin:10px;",
+"padding:10px;",
+"border-radius:10px;",
+"box-shadow:0 0 10px #000;",
+"position:absolute;",
+"top:0;",
+"left:0;",
+"width:100%;",
+"height:100%;",
+
+/* Python */
+"print('Hello world')",
+"x = 10",
+"if x > 5:\n  print('ok')",
+"for i in range(10): print(i)",
+"while True:\n  pass",
+"def ciao():\n  return 'ciao'",
+"import random",
+"random.random()",
+"import math",
+"math.floor(4.5)",
+
+/* EXTRA */
+"new Date()",
+"prompt('Write something')",
+"confirm('Are you sure?')",
+"location.reload()",
+"window.open('url')",
+"document.body.style.background='red';",
+
+];
+
+function showSnippets(){
+  toolsContent.innerHTML = "";
+  snippets.forEach(s=>{
+    const b = document.createElement("button");
+    b.className="tool-btn";
+    b.innerText = s;
+    b.onclick=()=>{ addMsg(s,"ai"); closeTools(); };
+    toolsContent.appendChild(b);
+  });
+}
+
+/* DOMANDE PREDEFINITE */
+const questions = [
+"hello",
+"how are you",
+"who are you",
+"what is html",
+"what is css",
+"what is javascript",
+"what is python",
+"make me a html website",
+"give me base css",
+"write javascript",
+"write python",
+"make me a js loop",
+"make me a js if",
+"make me a js function",
+"make me a js array",
+"make me a js object",
+"make me a fetch api call",
+"what is the dom",
+"what is an event",
+"make me a while loop",
+"python loop",
+"python if",
+"python list",
+"python function",
+"center css",
+"flexbox what is",
+"grid css",
+"button html",
+"input html",
+"link html",
+"image html",
+"audio html",
+"video html",
+"localstorage what is",
+"how to save data",
+"how to read data",
+"how to delete data",
+"what is json",
+"parse json",
+"settimeout",
+"setinterval",
+"data javascript",
+"numero random",
+"math js",
+"alert js",
+"prompt js",
+"confirm js",
+"switch js",
+"try catch",
+"class javascript",
+"api what are",
+"backend what is",
+"frontend what is",
+"error js",
+"debug js"
+];
+
+function showQuestions(){
+  toolsContent.innerHTML = "";
+  questions.forEach(q=>{
+    const b = document.createElement("button");
+    b.className="tool-btn";
+    b.innerText = q;
+    b.onclick=()=>{ addMsg(q,"user"); addMsg(aiResponse(q),"ai"); closeTools(); };
+    toolsContent.appendChild(b);
+  });
+}
+
+</script>
+
+</body>
+</html>

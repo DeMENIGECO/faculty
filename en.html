@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Faculty Editor</title>
@@ -25,41 +25,41 @@ body { display:flex; flex-direction:column; }
   <!-- File -->
   <div class="menu-item">File
     <div class="submenu">
-      <button onclick="newFile()">Nuovo</button>
-      <button onclick="openFile()">Apri</button>
-      <button onclick="saveFile()">Salva</button>
-      <button onclick="saveAs()">Salva come...</button>
+      <button onclick="newFile()">New</button>
+      <button onclick="openFile()">Open</button>
+      <button onclick="saveFile()">Save</button>
+      <button onclick="saveAs()">Save As...</button>
     </div>
   </div>
 
   <!-- Modifica -->
-  <div class="menu-item">Modifica
+  <div class="menu-item">Edit
     <div class="submenu">
-      <button onclick="undo()">Annulla</button>
-      <button onclick="redo()">Ripeti</button>
-      <button onclick="searchText()">Cerca</button>
-      <button onclick="replaceText()">Sostituisci</button>
+      <button onclick="undo()">Undo</button>
+      <button onclick="redo()">Redo</button>
+      <button onclick="searchText()">Search</button>
+      <button onclick="replaceText()">Replace</button>
     </div>
   </div>
 
   <!-- Esegui -->
-  <div class="menu-item">Esegui
+  <div class="menu-item">Run
     <div class="submenu">
-      <button onclick="runCode()">Esegui JS</button>
+      <button onclick="runCode()">Run JS</button>
     </div>
   </div>
 
   <!-- Impostazioni -->
-  <div class="menu-item">Impostazioni
+  <div class="menu-item">Settings
     <div class="submenu">
-      <div class="menu-item">Tema
+      <div class="menu-item">Theme
         <div class="subsubmenu">
-          <button onclick="setTheme('default')">Chiaro</button>
-          <button onclick="setTheme('dracula')">Scuro</button>
-          <button onclick="customTheme()">Personalizza Tema</button>
+          <button onclick="setTheme('default')">Default</button>
+          <button onclick="setTheme('dracula')">Dracula (Dark)</button>
+          <button onclick="customTheme()">Personalize Theme</button>
         </div>
       </div>
-      <div class="menu-item">Linguaggio
+      <div class="menu-item">Language
         <div class="subsubmenu">
           <button onclick="setLanguage('javascript')">JavaScript</button>
           <button onclick="setLanguage('python')">Python</button>
@@ -70,51 +70,52 @@ body { display:flex; flex-direction:column; }
       </div>
       <div class="menu-item">Codicing
         <div class="subsubmenu">
-          <button onclick="setIndent(2)">Indentazione 2 spazi</button>
-          <button onclick="setIndent(4)">Indentazione 4 spazi</button>
-          <button onclick="setTabs()">Tab vs Spazi</button>
-          <button onclick="setLencoiding()">Lencoiding</button>
+          <button onclick="setIndent(2)">Indentation 2 spaces</button>
+          <button onclick="setIndent(4)">Indentation 4 spaces</button>
+          <button onclick="setTabs()">Tab vs Spaces</button>
+          <button onclick="setLencoiding()">Line Ending</button>
           <button onclick="setEncoding()">Encoding</button>
         </div>
       </div>
-      <div class="menu-item">Globali
+      <div class="menu-item">Globals 
         <div class="subsubmenu">
-          <button onclick="manageCustomThemes()">Temi Personalizzati</button>
-          <button onclick="preferences()">Preferenze Generali</button>
+          <button onclick="manageCustomThemes()">Personalized Themes</button>
+          <button onclick="preferences()">General Preferences</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Scorciatoie -->
-  <div class="menu-item">Scorciatoie
+  <div class="menu-item">Shortcuts
     <div class="submenu">
-      <button>Ctrl+S → Salva</button>
-      <button>Ctrl+D → Tema scuro</button>
-      <button>Ctrl+B → Tema chiaro</button>
-      <button>Ctrl+Z → Annulla</button>
-      <button>Ctrl+Y → Ripeti</button>
-      <button>Ctrl+O → Funzioni sviluppatore</button>
+      <button>Ctrl+S → Save</button>
+      <button>Ctrl+D → Dark Theme</button>
+      <button>Ctrl+B → Light Theme</button>
+      <button>Ctrl+Z → Undo</button>
+      <button>Ctrl+Y → Redo</button>
+      <button>Ctrl+O → Developer Functions</button>
     </div>
   </div>
 
   <!-- Altro -->
-<div class="menu-item">Altro
+<div class="menu-item">Other
   <div class="submenu">
-    <button onclick="window.location.href = 'xsh1/devtools.fclt.html'">Funzioni sviluppatore</button>
-    <button onclick="window.location.href = 'xsh1/release.html' ">Note di Release</button>
-    <button onclick="window.location.href = 'xsh1/version.html'">Versione</button>
-    <button onclick="window.location.href = 'xsh1/about.html'">About Faculty Editor</button>
-    <div class="menu-item">Funzioni rapide
+    <button onclick="window.location.href = 'xsh1/devtools.fclt.html'">Developer Functions</button>
+    <button onclick="window.location.href = 'xsh1/translations/en/release.html' ">Release Notes</button>
+    <button onclick="window.location.href = 'xsh1/translations/en/version.html'">Version</button>
+    <button onclick="window.location.href = 'xsh1/translations/en/about.html'">About Faculty Editor</button>
+    <div class="menu-item">Quick Functions
       <div class="subsubmenu">
         <button onclick="openMarketplace()">Extensions Marketplace</button>
         <button onclick="openAi()">Faculty AI</button>
       </div>
     </div>
 
-    <div class="menu-item">Traduzioni
+    <div class="menu-item">Translations
       <div class="subsubmenu">
-        <button onclick="window.location.href = 'en.html' ">English (Inglese)</button>
+        <button onclick="window.location.href = 'en.html' ">English (English)</button>
+        <button onclick="window.location.href = 'faculty.html' ">Italiano (Italian)</button>
       </div>
     </div>
   </div>
@@ -133,8 +134,8 @@ body { display:flex; flex-direction:column; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/htmlmixed/htmlmixed.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/search/searchcursor.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/search/search.min.js"></script>
-<script src="xsh1/scripts/marketplace-open.js"></script>
-<script src="xsh1/scripts/ai-open.js"></script>
+<script src="xsh1/translations/en/marketplace-open.js"></script>
+<script src="xsh1/translations/en/ai-open.js"></script>
 
 <script>
 // Editor
@@ -183,16 +184,16 @@ function saveAs() { saveFile(); }
 function undo() { editor.undo(); }
 function redo() { editor.redo(); }
 function searchText() {
-  const query = prompt("Testo da cercare:");
+  const query = prompt("Text to search:");
   if(!query) return;
   const cursor = editor.getSearchCursor(query);
   if(cursor.findNext()) editor.setSelection(cursor.from(), cursor.to());
-  else alert("Testo non trovato!");
+  else alert("Text not found!");
 }
 function replaceText() {
-  const query = prompt("Testo da sostituire:");
+  const query = prompt("Text to replace:");
   if(!query) return;
-  const replacement = prompt("Sostituire con:");
+  const replacement = prompt("Replace with:");
   if(replacement===null) return;
   const cursor = editor.getSearchCursor(query);
   while(cursor.findNext()) cursor.replace(replacement);
@@ -201,8 +202,8 @@ function replaceText() {
 // Impostazioni
 function setTheme(theme) { editor.setOption("theme", theme); }
 function customTheme() {
-  const bg = prompt("Colore sfondo (es. #282c34):");
-  const fg = prompt("Colore testo (es. #abb2bf):");
+  const bg = prompt("Wallpaper color (es. #282c34):");
+  const fg = prompt("Text color (es. #abb2bf):");
   if(bg && fg) {
     editor.getWrapperElement().style.background = bg;
     editor.getWrapperElement().style.color = fg;
@@ -210,22 +211,22 @@ function customTheme() {
 }
 function setLanguage(lang) { editor.setOption("mode", lang==="pastedtext"?null:lang); }
 function setIndent(n) { editor.setOption("indentUnit", n); }
-function setTabs() { const useTabs = confirm("Vuoi usare TAB invece di spazi?"); editor.setOption("indentWithTabs", useTabs); }
+function setTabs() { const useTabs = confirm("Do you want to use TAB instead of spaces?"); editor.setOption("indentWithTabs", useTabs); }
 function setLencoiding() {
   const lines = editor.getValue().split('\n');
   const numbered = lines.map((line,i)=>`${i+1}: ${line}`).join('\n');
   editor.setValue(numbered);
 }
 function setEncoding() {
-  const enc = prompt("Seleziona encoding: UTF-8, ISO-8859-1, UTF-16", "UTF-8");
+  const enc = prompt("Select encoding: UTF-8, ISO-8859-1, UTF-16", "UTF-8");
   if(!enc) return;
   localStorage.setItem("facultyEditorEncoding", enc);
 }
 function manageCustomThemes() {
   const themeName = prompt("Nome nuovo tema:");
   if(!themeName) return;
-  const bg = prompt("Colore sfondo (es. #282c34):");
-  const fg = prompt("Colore testo (es. #abb2bf):");
+  const bg = prompt("Wallpaper color (es. #282c34):");
+  const fg = prompt("Text color (es. #abb2bf):");
   if(bg && fg) {
     const style = document.createElement('style');
     style.innerHTML = `.cm-s-${themeName} .CodeMirror { background: ${bg}; color: ${fg}; }`;
@@ -233,7 +234,7 @@ function manageCustomThemes() {
   }
 }
 function preferences() {
-  const lineWrap = confirm("Vuoi abilitare l'andata a capo automatica?");
+  const lineWrap = confirm("Do you want to enable automatic line wrapping?");
   editor.setOption("lineWrapping", lineWrap);
 }
 

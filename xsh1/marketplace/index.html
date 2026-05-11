@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extensions Marketplace</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #1e1e1e;
+      color: #ddd;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 260px;
+      background: #252526;
+      padding: 10px;
+      border-right: 1px solid #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .category {
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #bbb;
+    }
+
+    .category:hover, .category.active {
+      background: #37373d;
+      color: #fff;
+    }
+
+    .main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* IMPORTANTE */
+}
+
+#content {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  flex: 1;
+  overflow-y: auto;   /* <-- scroll vero qui */
+}
+
+    header {
+      background: #333;
+      padding: 12px 20px;
+      font-weight: bold;
+      border-bottom: 1px solid #444;
+    }
+
+    .search {
+      margin: 10px 20px;
+      padding: 10px;
+      background: #2a2d2e;
+      border: none;
+      color: white;
+      border-radius: 6px;
+    }
+
+    .grid {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      overflow-y: auto;
+    }
+
+    .card {
+      background: #252526;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 15px;
+      cursor: pointer;
+    }
+
+    .title { color: white; font-weight: bold; }
+    .desc { color: #aaa; font-size: 13px; margin: 6px 0; }
+
+    .btn {
+      padding: 6px 10px;
+      background: #0e639c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn.disabled { background: #444; cursor: not-allowed; }
+
+    .page { padding: 20px; overflow-y: auto; }
+    .back { background: #444; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="category active" onclick="setView('market')">🔥 Marketplace</div>
+  <div class="category" onclick="setView('installed')">📦 Installate</div>
+</div>
+
+<div class="main">
+
+  <header>Extensions Marketplace</header>
+  <input class="search" placeholder="Cerca estensioni..." oninput="render()" />
+  <div id="content"></div>
+
+</div>
+
+<script>
+    const defaultInstalled = [
+  "🎨 Faculty Editor Base Themes",
+  "🐍 Faculty Editor Base Languages",
+  "🧩 Faculty Editor STA SZA"
+];
+
+const extensions = [
+  {name:"🎨 Dark Theme+",desc:"Tema scuro VS Code.",cat:"Themes",rating:"4.7⭐",changelog:"v8.2.4"},
+  {name:"🐍 Python Helper",desc:"Autocompletamento Python.",cat:"Python",rating:"4.5⭐",changelog:"v174.92.2"},
+  {name:"🌐 HTML Booster",desc:"Suggerimenti HTML.",cat:"Web",rating:"4.2⭐",changelog:"v5.0.0"},
+  {name:"🧠 AI Assist",desc:"AI coding.",cat:"AI",rating:"4.9⭐",changelog:"v4o"},
+  {name:"🤖 Copilot",desc:"Copilot in Faculty Editor.",cat:"AI",rating:"3.0⭐",changelog:"v52.1.0"},
+  {name:"⬆️ Envolved Theme",desc:"SUPER THEME, is Involved for Faculty Editor",cat:"Themes",rating:"3.5⭐",changelog:"v3.72.2"},
+  {name:"⬆️ Envolved Theme+",desc:"SUPER THEME, is Involved for Faculty Editor (And Plus!)",cat:"Themes",rating:"3.9⭐",changelog:"v1.4.0"},
+  {name:"📄 Envolved Theme Blank",desc:"SUPER THEME, is Involved for Faculty Editor, and... white!",cat:"Themes",rating:"4.1⭐",changelog:"v1.2.4"},
+  {name:"📄 Envolved Theme Blank-",desc:"SUPER THEME, is Involved for Faculty Editor, and... white! (And plus!)",cat:"Themes",rating:"3.5⭐",changelog:"v3.72.2"},
+  {name:"🐍 Python Super Extension",desc:"Help on code in Python",cat:"Python",rating:"4.9⭐",changelog:"v3.15a8"},
+  {name:"💻 Chrome DevTools in Faculty Editor",desc:"Use Chrome DevTools in Faculty Editor",cat:"Web",rating:"4.7⭐",changelog:"v149"}
+  
+];
+
+let view="market";
+let selected=null;
+
+function getInstalled(){
+  let s=JSON.parse(localStorage.getItem("inst"))||[];
+  return [...new Set([...defaultInstalled,...s])];
+}
+
+function saveInstalled(l){localStorage.setItem("inst",JSON.stringify(l));}
+
+function install(n){
+  let i=getInstalled();
+  if(!i.includes(n)){i.push(n);saveInstalled(i);render();}
+}
+
+function uninstall(n){
+  if(defaultInstalled.includes(n))return;
+  saveInstalled(getInstalled().filter(x=>x!==n));
+  render();
+}
+
+function openPage(ext){
+  selected=ext;
+  render();
+}
+
+function back(){selected=null;render();}
+
+function setView(v){view=v;selected=null;render();}
+
+function render(){
+  const c=document.getElementById("content");
+  const s=document.querySelector(".search").value.toLowerCase();
+  const installed=getInstalled();
+
+  if(selected){
+    const isInstalled=installed.includes(selected.name);
+    const isDefault=defaultInstalled.includes(selected.name);
+
+    c.innerHTML=`
+      <div class="page">
+        <button class="back" onclick="back()">⬅ Indietro</button>
+        <h2>${selected.name}</h2>
+        <p>${selected.desc}</p>
+        <p>⭐ ${selected.rating}</p>
+        <pre style="color:#aaa">${selected.changelog}</pre>
+
+        <button class="btn ${isDefault?'disabled':''}" ${isDefault?'disabled':''}
+          onclick="${!isDefault ? (isInstalled?'uninstall(\'':'install(\'')+selected.name+"\')":""}">
+          ${isDefault ? "🚫 Default" : (isInstalled ? "Disinstalla" : "Installa")}
+        </button>
+      </div>`;
+    return;
+  }
+
+  let list = view==="installed"
+    ? installed.map(n=>extensions.find(e=>e.name===n)||{name:n,desc:"Base"})
+    : extensions;
+
+  c.innerHTML=`<div class="grid"></div>`;
+  const grid=c.querySelector(".grid");
+
+  list.filter(e=>e.name.toLowerCase().includes(s)).forEach(ext=>{
+    const isInstalled=installed.includes(ext.name);
+    const isDefault=defaultInstalled.includes(ext.name);
+
+    const d=document.createElement("div");
+    d.className="card";
+
+    d.innerHTML=`
+      <div class="title">${ext.name}</div>
+      <div class="desc">${ext.desc}</div>
+      <button class="btn ${isDefault?'disabled':''}" ${isDefault?'disabled':''}>
+        ${isDefault ? "🚫 Default" : (isInstalled?'Disinstalla':'Installa')}
+      </button>
+    `;
+
+    d.onclick=()=>openPage(ext);
+
+    const btn=d.querySelector("button");
+    btn.onclick=(e)=>{
+      e.stopPropagation();
+      if(isDefault) return;
+      isInstalled?uninstall(ext.name):install(ext.name);
+    };
+
+    grid.appendChild(d);
+  });
+}
+
+render();
+</script>
+
+</body>
+</html>
